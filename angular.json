@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "sloth-admin": {
+    "slothcms-admin": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/sloth-admin",
+            "outputPath": "dist/slothcms-admin",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -56,24 +56,51 @@
                   "maximumError": "5mb"
                 }
               ]
+            },
+            "test": {
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.test.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                }
+              ]
             }
           }
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "sloth-admin:build"
+            "browserTarget": "slothcms-admin:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "sloth-admin:build:production"
+              "browserTarget": "slothcms-admin:build:production"
+            },
+            "test": {
+              "browserTarget": "slothcms-admin:build:test"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "sloth-admin:build"
+            "browserTarget": "slothcms-admin:build"
           }
         },
         "test": {
@@ -110,15 +137,15 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "sloth-admin:serve"
+            "devServerTarget": "slothcms-admin:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "sloth-admin:serve:production"
+              "devServerTarget": "slothcms-admin:serve:production"
             }
           }
         }
       }
     }},
-  "defaultProject": "sloth-admin"
+  "defaultProject": "slothcms-admin"
 }

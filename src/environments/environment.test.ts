@@ -1,5 +1,5 @@
 export const environment = {
-  name: "prod",
   production: true,
-  mockBackend: false
+  name: "test",
+  mockBackend: true
 };
