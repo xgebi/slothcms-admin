@@ -10,13 +10,14 @@ import { Initialized, InitService } from './init.service';
 })
 export class InitComponent implements OnInit {
   private error: any;
+  private response: Initialized;
 
   constructor(private initService: InitService) { }
 
   ngOnInit() {
     this.initService.getInitializationState()
       .subscribe(
-        (data: Initialized) => { console.log(data) }, // success path
+        (data: Initialized) => { this.response = data; }, // success path
         error => this.error = error // error path
       )
   }
