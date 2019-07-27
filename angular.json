@@ -80,6 +80,14 @@
                   "maximumError": "5mb"
                 }
               ]
+            },
+            "mocked": {
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.mocked.ts"
+                }
+              ]
             }
           }
         },
@@ -92,8 +100,8 @@
             "production": {
               "browserTarget": "slothcms-admin:build:production"
             },
-            "test": {
-              "browserTarget": "slothcms-admin:build:test"
+            "mocked": {
+              "browserTarget": "slothcms-admin:build:mocked"
             }
           }
         },
@@ -140,12 +148,13 @@
             "devServerTarget": "slothcms-admin:serve"
           },
           "configurations": {
-            "production": {
-              "devServerTarget": "slothcms-admin:serve:production"
+            "test": {
+              "devServerTarget": "slothcms-admin:serve:test"
             }
           }
         }
       }
-    }},
+    }
+  },
   "defaultProject": "slothcms-admin"
 }
