@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
 export interface Initialized {
-  initialized: boolean
+  initialized: boolean;
 }
 
 @Injectable({

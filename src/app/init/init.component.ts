@@ -13,13 +13,16 @@ export class InitComponent implements OnInit {
   private error: any;
   private response: Initialized;
 
-  constructor(private initService: InitService, private router: Router) { }
+  constructor(private initService: InitService, private router: Router) {
+    console.log("bbbb");
+  }
 
   ngOnInit() {
     this.initService.getInitializationState()
       .subscribe(
         (data: Initialized) => {
           this.response = data;
+          //console.log(this.router.url);
           if (this.response.initialized) {
             this.router.navigateByUrl('/login');
           } else {

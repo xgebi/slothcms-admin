@@ -22,12 +22,12 @@ export class RegistrationComponent implements OnInit {
   }
 
   onSubmit() {
-    let details: RegistrationDetails = {
+    const details: RegistrationDetails = {
       username: this.username,
       password: this.password,
       email: this.email,
       sitename: this.sitename
-    }
+    };
     this.registrationService.register(details)
       .subscribe(resp => {
         console.log(resp);

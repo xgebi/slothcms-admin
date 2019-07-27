@@ -5,7 +5,7 @@ import { HttpClient, HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common
 
 import { AppRoutingModule } from './app-routing.module';
 
-import HttpMockRequestInterceptor from './interceptors/httpMockRequestInterceptor'
+import HttpMockRequestInterceptor from './interceptors/httpMockRequestInterceptor';
 
 import { environment } from '../environments/environment';
 import { InitComponent } from './init/init.component';
@@ -24,7 +24,7 @@ import { ThemeListComponent } from './themes/theme-list/theme-list.component';
 import { ThemeSettingsComponent } from './themes/theme-settings/theme-settings.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
-let conditionalProviders = [];
+const conditionalProviders = [];
 
 if (environment.mockBackend) {
   conditionalProviders.push({

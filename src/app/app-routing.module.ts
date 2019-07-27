@@ -16,18 +16,20 @@ import { PostsCategoriesComponent } from './posts/posts-categories/posts-categor
 import { ThemeListComponent } from './themes/theme-list/theme-list.component';
 import { ThemeSettingsComponent } from './themes/theme-settings/theme-settings.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { AuthorizedGuard } from './guards/authorized.guard';
 
 const routes: Routes = [
   { path: '', component: InitComponent },
   { path: 'register', component: RegistrationComponent },
   { path: 'login', component: LoginComponent },
-  { path: 'dashboard', component: DashboardComponent },
+  { path: 'dashboard', component: DashboardComponent, canActivate: [AuthorizedGuard] },
   {
     path: 'posts/:id',
+    canActivate: [AuthorizedGuard],
     children: [
-      { path: '', redirectTo: 'list', pathMatch: 'full' },
-      { path: 'list', component: PostsListComponent },
-      { path: 'new', component: PostEditComponent }
+      { path: '', redirectTo: 'list', canActivate: [AuthorizedGuard], pathMatch: 'full' },
+      { path: 'list', canActivate: [AuthorizedGuard], component: PostsListComponent },
+      { path: 'new', canActivate: [AuthorizedGuard], component: PostEditComponent }
     ]
   },
   { path: '**', component: PageNotFoundComponent }
