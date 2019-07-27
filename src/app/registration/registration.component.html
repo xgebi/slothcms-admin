@@ -1,1 +1,14 @@
-<p>registration works!</p>
+<main class="fake-body">
+  <form (ngSubmit)="onSubmit()">
+    <div *ngIf="formError">Missing values</div>
+    <label for="username">Username: </label>
+    <input type="text" id="username" name="username" [(ngModel)]="username" />
+    <label for="password">Password: </label>
+    <input type="password" id="password" name="password" [(ngModel)]="password" />
+    <label for="email">Email: </label>
+    <input type="text" id="email" name="email" [(ngModel)]="email" />
+    <label for="sitename">Site name: </label>
+    <input type="text" id="sitename" name="sitename" [(ngModel)]="sitename" />
+    <input type="submit" value="Register" />
+  </form>
+</main>
