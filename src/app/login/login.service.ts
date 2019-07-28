@@ -11,6 +11,7 @@ export interface LoggedInDetails {
   displayName: string;
   token: string;
   expiryTime: string;
+  permissionsLevel: number;
 }
 
 @Injectable({

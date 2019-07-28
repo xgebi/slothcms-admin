@@ -22,6 +22,10 @@ export class AuthorizedGuard implements CanActivate {
 
     const user: LoggedInDetails = JSON.parse(localStorage.getItem('sloth-user'));
 
+    if (!user || !user.expiryTime) {
+      return false;
+    }
+
     if ((new Date(user.expiryTime)) <= (new Date())) {
       this.router.navigateByUrl('/login');
       return false;

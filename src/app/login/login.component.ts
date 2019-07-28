@@ -28,11 +28,13 @@ export class LoginComponent implements OnInit {
       .subscribe(
         (data) => {
           const loggedInDetails: LoggedInDetails = {
-            uuid: data["uuid"],
-            displayName: data["displayName"],
-            token: data["token"],
-            expiryTime: data["expiryTime"]
+            uuid: data["body"]["uuid"],
+            displayName: data["body"]["displayName"],
+            token: data["body"]["token"],
+            expiryTime: data["body"]["expiryTime"],
+            permissionsLevel: data["body"]["permissionsLevel"]
           }
+
           localStorage.setItem('sloth-user', JSON.stringify(loggedInDetails));
           this.router.navigateByUrl('/dashboard');
         }, // success path
