@@ -6,6 +6,13 @@ export interface UserDetails {
   password: string;
 }
 
+export interface LoggedInDetails {
+  uuid: string;
+  displayName: string;
+  token: string;
+  expiryTime: string;
+}
+
 @Injectable({
   providedIn: 'root'
 })

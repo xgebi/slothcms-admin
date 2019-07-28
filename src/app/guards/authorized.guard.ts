@@ -3,6 +3,7 @@ import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, UrlTree } fro
 import { Observable } from 'rxjs';
 import UserDetails from '../models/user-details';
 import { Router } from '@angular/router';
+import { LoggedInDetails } from '../login/login.service';
 
 @Injectable({
   providedIn: 'root'
@@ -19,9 +20,10 @@ export class AuthorizedGuard implements CanActivate {
       this.router.navigateByUrl('/login');
       return false;
     }
-    const user: UserDetails = UserDetails.fromJSON(localStorage.getItem('sloth-user'));
 
-    if (user.getLastUpdated() <= (new Date())) {
+    const user: LoggedInDetails = JSON.parse(localStorage.getItem('sloth-user'));
+
+    if ((new Date(user.expiryTime)) <= (new Date())) {
       this.router.navigateByUrl('/login');
       return false;
     }
