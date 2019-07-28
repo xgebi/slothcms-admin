@@ -1,1 +1,15 @@
-<p>login works!</p>
+<div id="login-screen">
+  <div>
+    <p>Username or password are incorrect</p>
+    <form (ngSubmit)="onSubmit()" #form="ngForm">
+      <label for="username">Username:</label>
+      <input type="text" name="username" id="username" [(ngModel)]="userDetails.username" />
+
+      <label for="password">Password:</label>
+      <input type="password" name="password" id="password" [(ngModel)]="userDetails.password" />
+
+      <input type="submit" value="Log in" />
+
+    </form>
+  </div>
+</div>

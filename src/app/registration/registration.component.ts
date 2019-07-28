@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { RegistrationService, RegistrationDetails } from './registration.service';
 
 @Component({
@@ -9,13 +10,14 @@ import { RegistrationService, RegistrationDetails } from './registration.service
 })
 export class RegistrationComponent implements OnInit {
   public formError: boolean;
+  public error: string;
   public username: string;
   public password: string;
   public email: string;
   public sitename: string;
 
-  constructor(private registrationService: RegistrationService) {
-    this.formError = true;
+  constructor(private registrationService: RegistrationService, private router: Router) {
+    this.formError = false;
   }
 
   ngOnInit() {
@@ -28,9 +30,17 @@ export class RegistrationComponent implements OnInit {
       email: this.email,
       sitename: this.sitename
     };
+    console.log(details);
     this.registrationService.register(details)
       .subscribe(resp => {
-        console.log(resp);
+        if (resp.status === 201) {
+          this.router.navigateByUrl('/login');
+          return;
+        } else {
+          console.log(resp);
+          this.formError = true;
+          this.error = resp.body["error"];
+        }
       });
   }
 

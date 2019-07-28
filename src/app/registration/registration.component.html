@@ -1,6 +1,6 @@
 <main class="fake-body">
   <form (ngSubmit)="onSubmit()">
-    <div *ngIf="formError">Missing values</div>
+    <div *ngIf="formError">{{error}}</div>
     <label for="username">Username: </label>
     <input type="text" id="username" name="username" [(ngModel)]="username" />
     <label for="password">Password: </label>

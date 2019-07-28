@@ -17,6 +17,6 @@ export class RegistrationService {
   constructor(private http: HttpClient) { }
 
   register(details: RegistrationDetails) {
-    return this.http.post(this.registrationUrl, details);
+    return this.http.post(this.registrationUrl, details, { observe: 'response' });
   }
 }
