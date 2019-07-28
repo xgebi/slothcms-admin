@@ -1,15 +1,15 @@
-import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { Injectable } from "@angular/core";
+import { HttpClient } from "@angular/common/http";
 
 export interface Initialized {
   initialized: boolean;
 }
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root"
 })
 export class InitService {
-  private initUrl = '/api/init';
+  private initUrl = "/api/init";
 
   constructor(private http: HttpClient) { }
 

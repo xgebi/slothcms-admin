@@ -1,5 +1,5 @@
-import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { Injectable } from "@angular/core";
+import { HttpClient } from "@angular/common/http";
 
 export interface RegistrationDetails {
   username: string;
@@ -9,7 +9,7 @@ export interface RegistrationDetails {
 }
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root"
 })
 export class RegistrationService {
   private registrationUrl = "/api/register";
@@ -17,6 +17,6 @@ export class RegistrationService {
   constructor(private http: HttpClient) { }
 
   register(details: RegistrationDetails) {
-    return this.http.post(this.registrationUrl, details, { observe: 'response' });
+    return this.http.post(this.registrationUrl, details, { observe: "response" });
   }
 }

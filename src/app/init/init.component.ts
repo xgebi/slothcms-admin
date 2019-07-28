@@ -1,13 +1,13 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, OnInit } from "@angular/core";
+import { Router } from "@angular/router";
 
-import { Initialized, InitService } from './init.service';
+import { Initialized, InitService } from "./init.service";
 
 @Component({
-  selector: 'app-init',
-  templateUrl: './init.component.html',
-  styleUrls: ['./init.component.scss'],
-  providers: [InitService]
+  providers: [InitService],
+  selector: "app-init",
+  styleUrls: ["./init.component.scss"],
+  templateUrl: "./init.component.html",
 })
 export class InitComponent implements OnInit {
   private error: any;
@@ -28,7 +28,7 @@ export class InitComponent implements OnInit {
               this.router.navigateByUrl(this.router.url);
             }
           } else {
-            this.router.navigateByUrl('/register');
+            this.router.navigateByUrl("/register");
           }
         }, // success path
         error => this.error = error // error path

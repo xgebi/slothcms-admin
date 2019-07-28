@@ -4,12 +4,12 @@ export default class UserDetails {
   private lastUpdated: Date;
 
   static fromJSON(json: UserDetailsJSON | string): UserDetails {
-    if (typeof json === 'string') {
-      // if it's a string, parse it first
+    if (typeof json === "string") {
+      // if it"s a string, parse it first
       return JSON.parse(json, this.reviver);
     } else {
       // create an instance of the User class
-      let user = Object.create(UserDetails.prototype);
+      const user = Object.create(UserDetails.prototype);
       // copy all the fields from the json object
       return Object.assign(user, json, {
         // convert fields that need converting

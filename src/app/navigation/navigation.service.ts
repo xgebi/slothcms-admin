@@ -1,5 +1,5 @@
-import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { Injectable } from "@angular/core";
+import { HttpClient } from "@angular/common/http";
 
 export interface MinimalUser {
   uuid: string;
@@ -7,7 +7,7 @@ export interface MinimalUser {
 }
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root"
 })
 export class NavigationService {
   private loginRefreshUrl = "/api/login-refresh";

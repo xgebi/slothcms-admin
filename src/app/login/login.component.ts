@@ -1,12 +1,12 @@
-import { Component, OnInit } from '@angular/core';
-import { LoginService, UserDetails, LoggedInDetails } from './login.service';
-import { Router } from '@angular/router';
+import { Component, OnInit } from "@angular/core";
+import { LoginService, UserDetails, LoggedInDetails } from "./login.service";
+import { Router } from "@angular/router";
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss'],
-  providers: [LoginService]
+  providers: [LoginService],
+  selector: "app-login",
+  styleUrls: ["./login.component.scss"],
+  templateUrl: "./login.component.html",
 })
 export class LoginComponent implements OnInit {
   public userDetails: UserDetails;
@@ -15,9 +15,9 @@ export class LoginComponent implements OnInit {
 
   constructor(private loginService: LoginService, private router: Router) {
     this.userDetails = {
-      username: "",
-      password: ""
-    }
+      password: "",
+      username: ""
+    };
   }
 
   ngOnInit() {
@@ -28,15 +28,15 @@ export class LoginComponent implements OnInit {
       .subscribe(
         (data) => {
           const loggedInDetails: LoggedInDetails = {
-            uuid: data["body"]["uuid"],
             displayName: data["body"]["displayName"],
-            token: data["body"]["token"],
             expiryTime: data["body"]["expiryTime"],
-            permissionsLevel: data["body"]["permissionsLevel"]
-          }
+            permissionsLevel: data["body"]["permissionsLevel"],
+            token: data["body"]["token"],
+            uuid: data["body"]["uuid"]
+          };
 
-          localStorage.setItem('sloth-user', JSON.stringify(loggedInDetails));
-          this.router.navigateByUrl('/dashboard');
+          localStorage.setItem("sloth-user", JSON.stringify(loggedInDetails));
+          this.router.navigateByUrl("/dashboard");
         }, // success path
         error => this.error = error // error path
       );

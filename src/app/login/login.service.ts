@@ -1,5 +1,5 @@
-import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { Injectable } from "@angular/core";
+import { HttpClient } from "@angular/common/http";
 
 export interface UserDetails {
   username: string;
@@ -15,7 +15,7 @@ export interface LoggedInDetails {
 }
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root"
 })
 export class LoginService {
   private loginUrl = "/api/login";
@@ -23,6 +23,6 @@ export class LoginService {
   constructor(private http: HttpClient) { }
 
   login(user: UserDetails) {
-    return this.http.post(this.loginUrl, user, { observe: 'response' });
+    return this.http.post(this.loginUrl, user, { observe: "response" });
   }
 }

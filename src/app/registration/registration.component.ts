@@ -1,11 +1,11 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { RegistrationService, RegistrationDetails } from './registration.service';
+import { Component, OnInit } from "@angular/core";
+import { Router } from "@angular/router";
+import { RegistrationService, RegistrationDetails } from "./registration.service";
 
 @Component({
-  selector: 'app-registration',
-  templateUrl: './registration.component.html',
-  styleUrls: ['./registration.component.scss'],
+  selector: "app-registration",
+  templateUrl: "./registration.component.html",
+  styleUrls: ["./registration.component.scss"],
   providers: [RegistrationService]
 })
 export class RegistrationComponent implements OnInit {
@@ -34,7 +34,7 @@ export class RegistrationComponent implements OnInit {
     this.registrationService.register(details)
       .subscribe(resp => {
         if (resp.status === 201) {
-          this.router.navigateByUrl('/login');
+          this.router.navigateByUrl("/login");
           return;
         } else {
           console.log(resp);
