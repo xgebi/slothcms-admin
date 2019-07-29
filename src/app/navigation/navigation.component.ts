@@ -1,7 +1,16 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, Input } from "@angular/core";
 import { Router } from "@angular/router";
 import { LoggedInDetails } from "../login/login.service";
 import { NavigationService, MinimalUser } from "./navigation.service";
+
+export interface PostTypes {
+  postTypes: PostType[];
+}
+
+export interface PostType {
+  uuid: string;
+  displayName: string;
+}
 
 @Component({
   selector: "app-navigation",
@@ -9,6 +18,9 @@ import { NavigationService, MinimalUser } from "./navigation.service";
   styleUrls: ["./navigation.component.scss"]
 })
 export class NavigationComponent implements OnInit {
+  @Input()
+  postTypes: PostTypes;
+
   public user: LoggedInDetails;
 
   constructor(private router: Router, private navigationService: NavigationService) {
@@ -29,6 +41,10 @@ export class NavigationComponent implements OnInit {
   }
 
   ngOnInit() {
+  }
+
+  ngDoCheck() {
+    console.log(this.postTypes);
   }
 
   logout() {

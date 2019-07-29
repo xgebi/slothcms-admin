@@ -1,7 +1,9 @@
 import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
+import { PostTypes } from 'src/app/navigation/navigation.component';
 
 export interface PostsListQuery {
+  postTypes: PostTypes;
   userUuid: string;
   token: string;
   postTypeUuid: string;

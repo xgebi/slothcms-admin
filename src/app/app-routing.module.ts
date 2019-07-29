@@ -32,6 +32,7 @@ const routes: Routes = [
       { path: "new", canActivate: [AuthorizedGuard], component: PostEditComponent }
     ]
   },
+  { path: "settings", component: SiteSettingsComponent, canActivate: [AuthorizedGuard] },
   { path: "**", component: PageNotFoundComponent }
 ];
 

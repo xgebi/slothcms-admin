@@ -1,6 +1,14 @@
 <nav>
   <ul>
     <li><button (click)="logout()">Log out</button></li>
-
+    <li *ngFor="let postType of postTypes">
+      <a [href]="'/posts/' + postType.uuid + '/list'">{{postType.displayName}}</a>
+      <ul>
+        <li><a [href]="'/posts/' + postType.uuid + '/new'">New {{postType.displayName}}</a></li>
+        <li><a [href]="'/posts/' + postType.uuid + '/tags'">Tags</a></li>
+        <li><a [href]="'/posts/' + postType.uuid + '/categories'">Categories</a></li>
+      </ul>
+    </li>
+    <li><a routerLink="/settings">Settings</a></li>
   </ul>
 </nav>
