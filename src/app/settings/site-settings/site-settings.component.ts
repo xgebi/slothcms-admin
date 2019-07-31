@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { SiteSettingsService } from './site-settings.service';
+import { PostTypes } from 'src/app/navigation/navigation.component';
 
 @Component({
   selector: 'app-site-settings',
@@ -6,10 +8,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./site-settings.component.scss']
 })
 export class SiteSettingsComponent implements OnInit {
+  public postTypes: PostTypes;
 
-  constructor() { }
+  constructor(private siteSettingsService: SiteSettingsService) { }
 
   ngOnInit() {
+    this.siteSettingsService.getSettingsPage()
+      .subscribe(
+        (data: any) => { this.postTypes = data.postTypes; console.log(data); },
+        (error) => { console.log(error); }
+      );
   }
 
 }
