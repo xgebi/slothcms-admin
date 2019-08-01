@@ -34,17 +34,12 @@ export class NavigationComponent implements OnInit {
       .subscribe(
         (data) => {
           this.user.expiryTime = (new Date()).getTime().toString();
-          console.log(this.user.expiryTime);
         },
         error => { console.log(error); }
       );
   }
 
   ngOnInit() {
-  }
-
-  ngDoCheck() {
-    console.log(this.postTypes);
   }
 
   logout() {

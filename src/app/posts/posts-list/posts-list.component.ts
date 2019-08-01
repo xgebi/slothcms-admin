@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { PostsListService } from "./posts-list.service";
+import { ActivatedRoute, Params } from '@angular/router';
 
 @Component({
   selector: "app-posts-list",
@@ -9,11 +10,15 @@ import { PostsListService } from "./posts-list.service";
 })
 export class PostsListComponent implements OnInit {
   public error: any;
+  private postTypeId: string;
 
-  constructor(private postsListService: PostsListService) { }
+  constructor(private postsListService: PostsListService, private route: ActivatedRoute) { }
 
   ngOnInit() {
-    this.postsListService.getPosts(null)
+    this.route.params.subscribe((params: Params): void => {
+      this.postTypeId = params["id"];
+    });
+    this.postsListService.getPosts(this.postTypeId, null)
       .subscribe(
         (data) => {
           console.log(data);

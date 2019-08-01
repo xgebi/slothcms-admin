@@ -1,6 +1,7 @@
 import { Injectable } from "@angular/core";
-import { HttpClient } from "@angular/common/http";
+import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { PostTypes } from 'src/app/navigation/navigation.component';
+import { LoggedInDetails } from 'src/app/login/login.service';
 
 export interface PostsListQuery {
   postTypes: PostTypes;
@@ -14,12 +15,19 @@ export interface PostsListQuery {
   providedIn: "root"
 })
 export class PostsListService {
-  private postsListUrl = "/api/posts";
+  private postsListUrlPrefix = "/api/posts/";
+  private postsListUrlSuffix = "/list";
 
 
   constructor(private http: HttpClient) { }
 
-  getPosts(postListQuery: PostsListQuery) {
-    return this.http.post(this.postsListUrl, postListQuery);
+  getPosts(id: string, postListQuery: PostsListQuery) {
+    const user: LoggedInDetails = JSON.parse(localStorage.getItem("sloth-user"));
+    const httpOptions = {
+      headers: new HttpHeaders({
+        authorization: user.uuid + ":" + user.token
+      })
+    };
+    return this.http.get(this.postsListUrlPrefix + id + this.postsListUrlSuffix, httpOptions);
   }
 }
