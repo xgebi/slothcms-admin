@@ -1,4 +1,33 @@
-<app-navigation></app-navigation>
+<app-navigation [postTypes]="postTypes"></app-navigation>
 <main>
-  Hello
+  <table>
+    <thead>
+      <tr>
+        <td>Title</td>
+        <td>Status</td>
+        <td>Published/Updated date</td>
+        <td>Categories</td>
+        <td>Tags</td>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let post of postList">
+        <td>
+          <a [routerLink]="['/post/', post.uuid, 'edit']">{{ post.title }}</a>
+        </td>
+        <td>
+          {{ post.status }}
+        </td>
+        <td>
+          {{ post.publishDate }} / {{ post.updateDate }}
+        </td>
+        <td>
+          {{ post.categories.join(', ') }}
+        </td>
+        <td>
+          {{ post.tags.join(', ') }}
+        </td>
+      </tr>
+    </tbody>
+  </table>
 </main>

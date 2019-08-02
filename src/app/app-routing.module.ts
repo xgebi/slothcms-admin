@@ -17,6 +17,7 @@ import { ThemeListComponent } from "./themes/theme-list/theme-list.component";
 import { ThemeSettingsComponent } from "./themes/theme-settings/theme-settings.component";
 import { PageNotFoundComponent } from "./page-not-found/page-not-found.component";
 import { AuthorizedGuard } from "./guards/authorized.guard";
+import { PostActions } from './posts/post-edit/post-edit.service';
 
 const routes: Routes = [
   { path: "", component: InitComponent },
@@ -29,9 +30,10 @@ const routes: Routes = [
     children: [
       { path: "", redirectTo: "list", canActivate: [AuthorizedGuard], pathMatch: "full" },
       { path: "list", canActivate: [AuthorizedGuard], component: PostsListComponent },
-      { path: "new", canActivate: [AuthorizedGuard], component: PostEditComponent }
+      { path: "new", canActivate: [AuthorizedGuard], component: PostEditComponent, data: { action: PostActions.new } }
     ]
   },
+  { path: "post/:id/edit", component: PostEditComponent, canActivate: [AuthorizedGuard], data: { action: PostActions.edit } },
   { path: "settings", component: SiteSettingsComponent, canActivate: [AuthorizedGuard] },
   { path: "**", component: PageNotFoundComponent }
 ];
