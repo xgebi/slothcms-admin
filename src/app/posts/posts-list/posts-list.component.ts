@@ -2,19 +2,10 @@ import { Component, OnInit } from "@angular/core";
 import { PostsListService } from "./posts-list.service";
 import { ActivatedRoute, Params } from '@angular/router';
 import { PostTypes } from 'src/app/navigation/navigation.component';
-
-interface PostListItem {
-  uuid: string;
-  title: string;
-  postStatus: string;
-  publishDate: string;
-  updateDate: string;
-  categories: string[];
-  tags: string[];
-}
+import PostItem from 'src/app/models/post-item';
 
 interface PostList {
-  postList: PostListItem[];
+  postList: PostItem[];
 }
 
 

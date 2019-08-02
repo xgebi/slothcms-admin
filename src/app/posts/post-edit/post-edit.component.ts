@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import { PostEditService, PostActions } from './post-edit.service';
 import { PostTypes } from 'src/app/navigation/navigation.component';
+import PostItem from 'src/app/models/post-item';
 
 @Component({
   selector: 'app-post-edit',
@@ -13,6 +14,7 @@ export class PostEditComponent implements OnInit {
   public uuid: string;
   private action: PostActions;
   public postTypes: PostTypes;
+  public postInformation: PostItem;
 
   constructor(private route: ActivatedRoute, private postEditService: PostEditService) {
     this.route
@@ -28,15 +30,25 @@ export class PostEditComponent implements OnInit {
     if (this.action === PostActions.edit) {
       this.postEditService.getEditedPostInfo(this.uuid)
         .subscribe(
-          ((data: any) => { console.log(data); this.postTypes = data.postTypes; }),
+          ((data: any) => {
+            console.log(data);
+            this.postTypes = data.postTypes;
+            this.postInformation = data.postInformation;
+          }),
           (error: any) => { console.log(error); }
         );
     }
 
-    if (this.action === PostActions.edit) {
+    if (this.action === PostActions.new) {
       this.postEditService.getNewPostInfo(this.uuid)
         .subscribe(
-          ((data: any) => { console.log(data); this.postTypes = data.postTypes; }),
+          ((data: any) => {
+            console.log(data);
+            this.postTypes = data.postTypes;
+            this.postInformation = {
+              uuid: data.newPostUuid
+            }
+          }),
           (error: any) => { console.log(error); }
         );
     }

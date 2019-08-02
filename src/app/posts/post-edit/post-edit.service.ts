@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { LoggedInDetails } from 'src/app/login/login.service';
+import PostItem from 'src/app/models/post-item';
 
 export enum PostActions {
   new,
@@ -14,7 +15,8 @@ export class PostEditService {
   private newPostInfoUrlPrefix = "/api/posts/";
   private newPostInfoUrlSuffix = "/new";
 
-  private editPostInfoUrlPrefix = "/api/post/edit/";
+  private editPostInfoUrlPrefix = "/api/post/";
+  private editPostInfoUrlSuffix = "/edit";
   private httpOptions: any;
 
   constructor(private http: HttpClient) {
@@ -31,6 +33,14 @@ export class PostEditService {
   }
 
   getEditedPostInfo(postId: string) {
-    return this.http.get(this.editPostInfoUrlPrefix + postId, this.httpOptions);
+    return this.http.get(this.editPostInfoUrlPrefix + postId + this.editPostInfoUrlSuffix, this.httpOptions);
+  }
+
+  savePost(postInfo: PostItem) {
+    return this.http.put("/api/post/save", postInfo, this.httpOptions);
+  }
+
+  createNewPost(postInfo: PostItem) {
+    return this.http.post("/api/post/create", postInfo, this.httpOptions);
   }
 }

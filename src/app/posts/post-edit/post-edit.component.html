@@ -1,4 +1,8 @@
 <app-navigation [postTypes]="postTypes"></app-navigation>
 <main>
+  <label for="title">Title</label>
+  <input id="title" name="title" [(ngModel)]="postInformation.title">
 
+  <label for="content">Content</label>
+  <textarea id="content" name="content" [(ngModel)]="postInformation.content"></textarea>
 </main>
