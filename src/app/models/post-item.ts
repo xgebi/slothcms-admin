@@ -5,6 +5,8 @@ export default interface PostItem {
   content?: string;
   jsFilePath?: string;
   cssFilePath?: string;
+  jsFile?: string;
+  cssFile?: string;
   postStatus?: string;
   publishDate?: string;
   updateDate?: string;

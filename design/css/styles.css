@@ -1,0 +1,6 @@
+:root {
+  --dark-purple: hsl(300, 100%, 12.9%);
+  --white: hsl(300, 0%, 95%); }
+
+body {
+  background: var(--dark-purple); }

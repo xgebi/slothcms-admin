@@ -1,8 +1,48 @@
 <app-navigation [postTypes]="postTypes"></app-navigation>
-<main>
+<main *ngIf="postInformation">
   <label for="title">Title</label>
   <input id="title" name="title" [(ngModel)]="postInformation.title">
 
+  <label for="slug">Slug</label>
+  <input id="slug" name="slug" [(ngModel)]="postInformation.slug">
+
   <label for="content">Content</label>
   <textarea id="content" name="content" [(ngModel)]="postInformation.content"></textarea>
+
+  <div *ngIf="!postInformation.cssFilePath">
+    <label for="cssFile">CSS File</label>
+    <input type="file" name="cssFile" [(ngModel)]="postInformation.cssFile" />
+  </div>
+
+  <div *ngIf="postInformation.cssFilePath">
+    CSS file for this post is {{ postInformation.cssFilePath }}
+  </div>
+
+  <div *ngIf="!postInformation.jsFilePath">
+    <label for="jsFile">CSS File</label>
+    <input type="file" name="jsFile" [(ngModel)]="postInformation.jsFile" />
+  </div>
+
+  <div *ngIf="postInformation.jsFilePath">
+    JS file for this post is {{ postInformation.jsFilePath }}
+  </div>
+
+  <label for="categories">Categories</label>
+  <input id="categories" name="categories" [(ngModel)]="categories">
+
+  <label for="tags">Tags</label>
+  <input id="tags" name="tags" [(ngModel)]="tags">
+
+  <div *ngIf="postInformation.postStatus !== 'published'">
+    Publish at
+    <input type="datetime" name="datetime" [(ngModel)]="publishDate" />
+
+    <button>Save progress</button>
+    <button>Publish</button>
+  </div>
+
+  <div *ngIf="postInformation.postStatus === 'published'">
+    Published: {{ publishDate.toDateString() }}
+    <button>Update</button>
+  </div>
 </main>
