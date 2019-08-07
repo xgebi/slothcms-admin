@@ -1,0 +1,29 @@
+.design-system {
+  .circle {
+    border-radius: 100%;
+    padding: .5rem;
+    border: 2px solid black;
+    width: 5rem;
+    height: 5rem;
+
+    &.purple {
+      background: var(--dark-purple);
+      border-color: var(--orange);
+    }
+
+    &.orange {
+      background: var(--orange);
+      border-color: var(--dark-purple);
+    }
+
+    &.green {
+      background: var(--green);
+      border-color: var(--dark-purple);
+    }
+
+    &.white {
+      background: var(--white);
+      border-color: var(--dark-purple);
+    }
+  }
+}
