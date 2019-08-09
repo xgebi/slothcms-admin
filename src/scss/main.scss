@@ -1,3 +1,87 @@
-:root {
-  font-size: 1.25rem
+/* Typography */
+
+@font-face {
+  font-family: 'Roboto Mono';
+  font-weight: 400;
+  font-style: normal;
+  src: url('../assets/fonts/RobotoMono-Regular.ttf') format('truetype');
 }
+
+@font-face {
+  font-family: 'Roboto Mono';
+  font-weight: 400;
+  font-style: italic;
+  src: url('../assets/fonts/RobotoMono-RegularItalic.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Roboto Mono';
+  font-weight: 700;
+  font-style: normal;
+  src: url('../assets/fonts/RobotoMono-Bold.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Roboto Mono';
+  font-weight: 700;
+  font-style: italic;
+  src: url('../assets/fonts/RobotoMono-BoldItalic.ttf') format('truetype');
+}
+
+:root {
+  font-size: 1.25rem;
+  font-family: 'Roboto Mono', monospace;
+}
+
+
+h1 {
+  font-size: 2.25rem;
+  margin: 1.5rem 0;
+}
+
+h2 {
+  font-size: 1.75rem;
+  margin: 1.25rem 0;
+}
+
+h3 {
+  font-size: 1.5rem;
+  margin: 1.125rem 0;
+}
+
+h4 {
+  font-size: 1.25rem;
+  margin: 1rem 0;
+}
+
+h5 {
+  font-size: 1.125rem;
+  margin: .9rem 0;
+}
+
+h6 {
+  font-size: 1.125rem;
+  font-weight: 400;
+  text-decoration: underline;
+  margin: .8rem 0;
+}
+
+
+/* Forms */
+textarea,
+input:not([type="button"]):not([type="submit"]):not([type="reset"]):not([type="checkbox"]):not([type="radio"]) {
+  width: 100%;
+  border-radius: 2px;
+  border: 1px solid darkgray;
+}
+
+button,
+input[type="button"],
+input[type="submit"],
+input[type="reset"] {
+  font-family: 'Roboto Mono', monospace;
+  padding: .25rem 1.25rem;
+  border: 1px solid black;
+  box-shadow: 1px 1px darkgray;
+}
+

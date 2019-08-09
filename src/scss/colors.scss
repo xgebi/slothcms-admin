@@ -5,3 +5,43 @@
   --white: hsl(300, 0%, 95%);
 }
 
+.primary {
+  color: var(--white);
+  background: var(--dark-purple);
+
+  &:active {
+    background: var(--white);
+    color: var(--dark-purple);
+  }
+}
+
+.secondary {
+  background: var(--white);
+  color: var(--dark-purple);
+
+  &:active {
+    color: var(--white);
+    background: var(--dark-purple);
+  }
+}
+
+
+.warning {
+  color: var(--dark-purple);
+  background: var(--orange);
+
+  &:active {
+    background: var(--dark-purple);
+    color: var(--orange);
+  }
+}
+
+.success {
+  color: var(--dark-purple);
+  background: var(--green);
+
+  &:active {
+    background: var(--dark-purple);
+    color: var(--green);
+  }
+}

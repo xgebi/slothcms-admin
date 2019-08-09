@@ -26,4 +26,14 @@
       border-color: var(--dark-purple);
     }
   }
+
+  .italic-text,
+  .bold-italic-text {
+    font-style: italic;
+  }
+
+  .bold-text,
+  .bold-italic-text {
+    font-weight: 700;
+  }
 }

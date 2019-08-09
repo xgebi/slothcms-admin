@@ -11,7 +11,6 @@ import { ContentManagementComponent } from "./settings/content-management/conten
 import { PostTypeSettingsComponent } from "./settings/post-type-settings/post-type-settings.component";
 import { PostsListComponent } from "./posts/posts-list/posts-list.component";
 import { PostEditComponent } from "./posts/post-edit/post-edit.component";
-import { PostsTagsComponent } from "./posts/posts-tags/posts-tags.component";
 import { PostsCategoriesComponent } from "./posts/posts-categories/posts-categories.component";
 import { ThemeListComponent } from "./themes/theme-list/theme-list.component";
 import { ThemeSettingsComponent } from "./themes/theme-settings/theme-settings.component";
