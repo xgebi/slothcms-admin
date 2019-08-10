@@ -2,7 +2,14 @@
 <main>
   <h1>Settings</h1>
   <article>
-
-
+    <form (ngSubmit)="onSubmit(form)" #form="ngForm">
+      <div *ngFor="let item of settings; let i=index">
+        <input *ngIf="item.settingsValueType == 'boolean'" type="checkbox" id="{{ item.settingsName }}" [(ngModel)]="settings[i].settingsValue" name="{{ item.settingsName }}" />
+        <label id="{{item.settingsName}}">{{ item.displayName }}</label>
+        <input *ngIf="item.settingsValueType == 'text'" type="text" id="{{ item.settingsName }}"
+          [(ngModel)]="settings[i].settingsValue" name="{{ item.settingsName }}" />
+      </div>
+      <input type="submit" value="Save settings" />
+    </form>
   </article>
 </main>
