@@ -1,9 +1,9 @@
-import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { LoggedInDetails } from 'src/app/login/login.service';
+import { Injectable } from "@angular/core";
+import { HttpClient, HttpHeaders } from "@angular/common/http";
+import { LoggedInDetails } from "src/app/login/login.service";
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root"
 })
 export class SiteSettingsService {
   private siteSettingsUrl = "/api/settings";
@@ -28,6 +28,6 @@ export class SiteSettingsService {
         authorization: user.uuid + ":" + user.token
       })
     };
-    return this.http.post(this.saveSiteSettingsUrl, settings, httpOptions);
+    return this.http.post(this.saveSiteSettingsUrl, { settings }, httpOptions);
   }
 }
