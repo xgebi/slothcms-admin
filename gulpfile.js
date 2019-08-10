@@ -8,13 +8,13 @@ sass.compiler = require('node-sass');
 gulp.task('scss', function () {
   return gulp.src('./src/styles.scss')
     .pipe(sass().on('error', sass.logError))
-    .pipe(gulp.dest('./design/css'));
+    .pipe(gulp.dest('./design/'));
 });
 
 gulp.task('design', function () {
   return gulp.src('./src/designSystem.scss')
     .pipe(sass().on('error', sass.logError))
-    .pipe(gulp.dest('./design/css'));
+    .pipe(gulp.dest('./design/'));
 });
 
 gulp.task('assets', function () {

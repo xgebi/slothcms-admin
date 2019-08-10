@@ -1,12 +1,9 @@
 import { Component, OnInit } from "@angular/core";
 import { PostsListService } from "./posts-list.service";
-import { ActivatedRoute, Params } from '@angular/router';
-import { PostTypes } from 'src/app/navigation/navigation.component';
-import PostItem from 'src/app/models/post-item';
+import { ActivatedRoute, Params } from "@angular/router";
+import { PostTypes } from "src/app/navigation/navigation.component";
+import PostList from "src/app/models/post-list";
 
-interface PostList {
-  postList: PostItem[];
-}
 
 
 @Component({

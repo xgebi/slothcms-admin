@@ -1,0 +1,5 @@
+app-init > *:nth-child(2) {
+  display: grid;
+  grid-template-columns: 15rem auto;
+}
+
