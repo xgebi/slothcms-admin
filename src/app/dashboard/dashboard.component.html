@@ -63,11 +63,15 @@
     </section>
     <section class="widget create-draft">
       <h2>Create draft</h2>
-      <form>
+      <form (ngSubmit)="onSubmit(form)" #form="ngForm">
         <label for="draft-title">Title:</label>
-        <input id="draft-title" name="draft-title" [(ngModel)]="draft.title" />
+        <input id="draft-title" name="draft-title" [(ngModel)]="draft.title" name="draft-title" />
         <label for="draft-text">Draft text:</label>
-        <textarea id="draft-text"></textarea>
+        <textarea id="draft-text" name="draft-body" [(ngModel)]="draft.text"></textarea>
+        <label for="post-type-picker">Post type:</label>
+        <select id="post-type-picker" [(ngModel)]="draft.postType" name="post-type">
+          <option *ngFor="let postType of postTypes" value="{{ postType.uuid }}">{{ postType.displayName }}</option>
+        </select>
         <input type="submit" value="Create draft" />
       </form>
     </section>

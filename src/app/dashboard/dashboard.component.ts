@@ -1,12 +1,7 @@
 import { Component, OnInit } from "@angular/core";
-import { DashboardService } from "./dashboard.service";
+import Draft, { DashboardService } from "./dashboard.service";
 import { PostTypes } from "../navigation/navigation.component";
 import PostList from "../models/post-list";
-
-interface Draft {
-  title: string;
-  text: string;
-}
 
 @Component({
   selector: "app-dashboard",
@@ -32,7 +27,8 @@ export class DashboardComponent implements OnInit {
     };
     this.draft = {
       title: "",
-      text: ""
+      text: "",
+      postType: null
     }
   }
 
@@ -41,12 +37,25 @@ export class DashboardComponent implements OnInit {
       .subscribe(
         (data: any) => {
           this.postTypes = data.postTypes;
+          this.draft.postType = data.postTypes[0].uuid;
           this.recentPosts.postList = data.recentPosts;
           this.upcomingPosts.postList = data.upcomingPosts;
           this.drafts.postList = data.drafts;
         },
         error => { console.log(error); }
       );
+  }
+
+  onSubmit(form) {
+    this.dashboardService.createDraft(this.draft)
+      .subscribe(
+        (data: any) => {
+          this.drafts.postList = data.drafts;
+        },
+        error => {
+          console.log(error);
+        }
+      )
   }
 
 }
