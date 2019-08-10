@@ -1,23 +1,75 @@
 <app-navigation [postTypes]="postTypes"></app-navigation>
 <main>
   <h1>Dashboard</h1>
-  <section class="widget upcoming-posts">
-    <h2>Upcoming posts</h2>
-
-    <hr />
-    <h2>Drafts</h2>
-  </section>
-  <section class="widget recent-posts">
-    <h2>Recent posts</h2>
-  </section>
-  <section class="widget create-draft">
-    <h2>Create draft</h2>
-    <form>
-      <label for="draft-title">Title:</label>
-      <input id="draft-title" name="draft-title" [(ngModel)]="draft.title" />
-      <label for="draft-text">Draft text:</label>
-      <textarea id="draft-text"></textarea>
-      <input type="submit" value="Create draft" />
-    </form>
-  </section>
+  <article class="dashboard">
+    <section class="widget upcoming-posts">
+      <h2>Upcoming posts</h2>
+      <table *ngIf="upcomingPosts.postList && upcomingPosts.postList.length > 0">
+        <thead>
+          <tr>
+            <td>Title</td>
+            <td>Scheduled</td>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let post of upcomingPosts.postList">
+            <td><a [routerLink]="['/post/', post.uuid, 'edit']">{{ post.title }}</a></td>
+            <td>{{ post.publishDate|date:'dd.MM.yyyy &nbsp; HH:mm'}}</td>
+          </tr>
+        </tbody>
+      </table>
+      <div *ngIf="!upcomingPosts.postList || upcomingPosts.postList.length === 0">
+        No upcoming posts
+      </div>
+      <hr />
+      <h2>Drafts</h2>
+      <table *ngIf="drafts.postList && drafts.postList.length > 0">
+        <thead>
+          <tr>
+            <td>Title</td>
+            <td>Scheduled</td>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let post of drafts.postList">
+            <td><a [routerLink]="['/post/', post.uuid, 'edit']">{{ post.title }}</a></td>
+            <td>{{ post.publishDate|date:'dd.MM.yyyy &nbsp; HH:mm'}}</td>
+          </tr>
+        </tbody>
+      </table>
+      <div *ngIf="!drafts.postList || drafts.postList.length === 0">
+        No available drafts
+      </div>
+    </section>
+    <section class="widget recent-posts">
+      <h2>Recent posts</h2>
+      <table *ngIf="recentPosts.postList && recentPosts.postList.length > 0">
+        <thead>
+          <tr>
+            <td>Title</td>
+            <td>Scheduled</td>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let post of recentPosts.postList">
+            <td><a [routerLink]="['/post/', post.uuid, 'edit']">{{ post.title }}</a></td>
+            <td>{{ post.publishDate|date:'dd.MM.yyyy &nbsp; HH:mm'}}</td>
+          </tr>
+        </tbody>
+      </table>
+      <div *ngIf="!recentPosts.postList || recentPosts.postList.length === 0">
+        No available recent posts
+      </div>
+    </section>
+    <section class="widget create-draft">
+      <h2>Create draft</h2>
+      <form>
+        <label for="draft-title">Title:</label>
+        <input id="draft-title" name="draft-title" [(ngModel)]="draft.title" />
+        <label for="draft-text">Draft text:</label>
+        <textarea id="draft-text"></textarea>
+        <input type="submit" value="Create draft" />
+      </form>
+    </section>
+  </article>
 </main>

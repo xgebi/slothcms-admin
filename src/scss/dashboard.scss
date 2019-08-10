@@ -1,0 +1,17 @@
+app-dashboard {
+  article {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 1rem;
+  }
+
+  .widget {
+    padding: 1rem;
+    font-size: .9rem;
+    border: 1px solid var(--dark-purple);
+
+    h2 {
+      font-size: 1.25rem;
+    }
+  }
+}

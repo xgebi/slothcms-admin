@@ -45,3 +45,13 @@
     color: var(--green);
   }
 }
+
+nav a,
+nav a:visited,
+nav a:link {
+  color: var(--dark-purple);
+  &.active {
+    background: var(--dark-purple);
+    color: var(--white);
+  }
+}

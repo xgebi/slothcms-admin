@@ -20,16 +20,30 @@ export class DashboardComponent implements OnInit {
   public upcomingPosts: PostList;
   public drafts: PostList;
 
-  constructor(private dashboardService: DashboardService) { }
+  constructor(private dashboardService: DashboardService) {
+    this.recentPosts = {
+      postList: []
+    };
+    this.upcomingPosts = {
+      postList: []
+    };
+    this.drafts = {
+      postList: []
+    };
+    this.draft = {
+      title: "",
+      text: ""
+    }
+  }
 
   ngOnInit() {
     this.dashboardService.getDashboardInformation()
       .subscribe(
         (data: any) => {
           this.postTypes = data.postTypes;
-          this.recentPosts = data.recentPosts;
-          this.upcomingPosts = data.upcomingPosts;
-          this.drafts = data.drafts;
+          this.recentPosts.postList = data.recentPosts;
+          this.upcomingPosts.postList = data.upcomingPosts;
+          this.drafts.postList = data.drafts;
         },
         error => { console.log(error); }
       );

@@ -85,3 +85,19 @@ input[type="reset"] {
   box-shadow: 1px 1px darkgray;
 }
 
+
+app-navigation {
+  .button.logout-button {
+    padding: .25rem;
+    border: none;
+    text-decoration: underline;
+    box-shadow: unset;
+    background: unset;
+
+    &:hover {
+      color: var(--white);
+      background: var(--dark-purple);
+      cursor: pointer;
+    }
+  }
+}

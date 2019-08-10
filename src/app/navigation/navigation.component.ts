@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from "@angular/core";
-import { Router } from "@angular/router";
+import { Router, Params, ActivatedRoute } from "@angular/router";
 import { LoggedInDetails } from "../login/login.service";
 import { NavigationService, MinimalUser } from "./navigation.service";
 
@@ -22,8 +22,9 @@ export class NavigationComponent implements OnInit {
   postTypes: PostTypes;
 
   public user: LoggedInDetails;
+  public pathname = window.location.pathname;
 
-  constructor(private router: Router, private navigationService: NavigationService) {
+  constructor(private router: Router, private navigationService: NavigationService, private route: ActivatedRoute) {
     this.user = JSON.parse(localStorage.getItem("sloth-user"));
     const minUser: MinimalUser = {
       uuid: this.user.uuid,

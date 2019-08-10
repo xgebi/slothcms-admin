@@ -1,13 +1,46 @@
+<section>
+  Logged in as: <br />
+  {{ user.displayName }} <br />
+  <button (click)="logout()" class="button logout-button">Log out</button>
+</section>
 <nav>
   <ul>
-    <li><button (click)="logout()">Log out</button></li>
+    <li><a routerLink="/dashboard" [ngClass]="{'active': pathname == '/dashboard'}">Dashboard</a></li>
     <li *ngFor="let postType of postTypes">
-      <a [href]="'/posts/' + postType.uuid + '/list'">{{postType.displayName}}</a>
+      <a [href]="'/posts/' + postType.uuid + '/list'"
+        [ngClass]="{'active': pathname == '/posts/' + postType.uuid + '/list'}">{{postType.displayName}}</a>
       <ul>
-        <li><a [href]="'/posts/' + postType.uuid + '/new'">New {{postType.displayName}}</a></li>
-        <li><a [href]="'/posts/' + postType.uuid + '/categories'">Categories</a></li>
+        <li>
+          <a [href]="'/posts/' + postType.uuid + '/new'"
+            [ngClass]="{'active': pathname == '/posts/' + postType.uuid + '/new'}">New {{postType.displayName}}</a></li>
+        <li>
+          <a [href]="'/posts/' + postType.uuid + '/categories'"
+            [ngClass]="{'active': pathname == '/posts/' + postType.uuid + '/categories'}">Categories</a></li>
       </ul>
     </li>
-    <li><a routerLink="/settings">Settings</a></li>
+    <li>
+      <a [routerLink]="['/', 'settings']" [ngClass]="{'active': pathname == '/settings'}">Settings</a>
+      <ul>
+        <li>
+          <a [routerLink]="['/', 'settings', 'content']"
+            [ngClass]="{'active': pathname == '/settings/content'}">Content</a>
+        </li>
+        <li>
+          <a [routerLink]="['/', 'settings', 'post-types']"
+            [ngClass]="{'active': pathname == '/settings/post-types'}">Post types</a>
+        </li>
+        <li>
+          <a [routerLink]="['/', 'settings', 'themes']"
+            [ngClass]="{'active': pathname == '/settings/themes'}">Themes</a>
+        </li>
+        <li>
+          <a [routerLink]="['/', 'settings', 'theme']" [ngClass]="{'active': pathname == '/settings/theme'}">Theme
+            options</a>
+        </li>
+        <li>
+          <a [routerLink]="['/', 'settings', 'menu']" [ngClass]="{'active': pathname == '/settings/menu'}">Menu</a>
+        </li>
+      </ul>
+    </li>
   </ul>
 </nav>
