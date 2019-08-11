@@ -6,7 +6,10 @@ import { LoggedInDetails } from "src/app/login/login.service";
   providedIn: "root"
 })
 export class ThemeListService {
-  public themeListUrl = "/api/themes/list";
+  private themeListUrl = "/api/themes";
+  private themeListUrlSuffix = "/list";
+  private useThemeUrlSuffix = "/use-theme";
+
 
   constructor(private http: HttpClient) { }
 
@@ -17,6 +20,16 @@ export class ThemeListService {
         authorization: user.uuid + ":" + user.token
       })
     };
-    return this.http.get(this.themeListUrl, httpOptions);
+    return this.http.get(this.themeListUrl + this.themeListUrlSuffix, httpOptions);
+  }
+
+  useTheme(themeName: string) {
+    const user: LoggedInDetails = JSON.parse(localStorage.getItem("sloth-user"));
+    const httpOptions = {
+      headers: new HttpHeaders({
+        authorization: user.uuid + ":" + user.token
+      })
+    };
+    return this.http.post(this.themeListUrl + this.useThemeUrlSuffix, { theme: themeName }, httpOptions);
   }
 }

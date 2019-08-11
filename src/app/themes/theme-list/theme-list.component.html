@@ -1,4 +1,10 @@
 <app-navigation [postTypes]="postTypes"></app-navigation>
 <main>
   <h1>Themes list</h1>
+  <article>
+    <section *ngFor="let theme of themes">
+      <h2>{{ theme.name }}</h2>
+      <button click="useTheme(theme.name)">Use theme</button>
+    </section>
+  </article>
 </main>
