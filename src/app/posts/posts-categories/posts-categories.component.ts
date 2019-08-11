@@ -32,4 +32,8 @@ export class PostsCategoriesComponent implements OnInit {
       );
   }
 
+  deleteCategory(categoryUuid) {
+
+  }
+
 }

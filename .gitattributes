@@ -1,1 +1,1 @@
-*.scss            text diff=css   linguist-language=CSS
+#*.scss            text diff=css   linguist-language=CSS

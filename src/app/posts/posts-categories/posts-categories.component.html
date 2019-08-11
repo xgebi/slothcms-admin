@@ -9,5 +9,16 @@
         <td>actions</td>
       </tr>
     </thead>
+    <tbody>
+      <tr *ngFor="let category of categories">
+        <td>
+          <a [routerLink]="['/post/', postTypeUuid, '/category/', category.uuid, 'edit']">{{ category.name }}</a>
+        </td>
+        <td>
+          <a [routerLink]="['/post/', postTypeUuid, 'edit']">Edit</a><br />
+          <button (click)="deleteCategory(category.uuid)">Delete</button>
+        </td>
+      </tr>
+    </tbody>
   </table>
 </main>
