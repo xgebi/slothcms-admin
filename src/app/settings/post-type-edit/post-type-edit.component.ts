@@ -17,7 +17,7 @@ export class PostTypeEditComponent implements OnInit {
 
   constructor(private postTypeEditService: PostTypeEditService, private route: ActivatedRoute) {
     this.route.params.subscribe((params: Params): void => {
-      this.postTypeId = params["postTypeID"];
+      this.postTypeId = params["postTypeId"];
     });
   }
 
