@@ -1,7 +1,7 @@
-import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { LoggedInDetails } from '../login/login.service';
-import { PostType } from '../navigation/navigation.component';
+import { Injectable } from "@angular/core";
+import { HttpClient, HttpHeaders } from "@angular/common/http";
+import { LoggedInDetails } from "../login/login.service";
+import { PostType } from "../navigation/navigation.component";
 
 export default interface Draft {
   title: string;
@@ -10,7 +10,7 @@ export default interface Draft {
 }
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root"
 })
 export class DashboardService {
   private dashboardUrl = "/api/dashboard-information";

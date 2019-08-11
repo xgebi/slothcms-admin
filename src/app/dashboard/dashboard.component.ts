@@ -29,7 +29,7 @@ export class DashboardComponent implements OnInit {
       title: "",
       text: "",
       postType: null
-    }
+    };
   }
 
   ngOnInit() {
@@ -55,7 +55,12 @@ export class DashboardComponent implements OnInit {
         error => {
           console.log(error);
         }
-      )
+      );
+    this.draft = {
+      title: "",
+      text: "",
+      postType: null
+    };
   }
 
 }

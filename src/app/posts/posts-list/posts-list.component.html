@@ -1,5 +1,17 @@
 <app-navigation [postTypes]="postTypes"></app-navigation>
 <main>
+  <h1>List of {{ currentPostType.displayName }}</h1>
+  <div>
+    <a [routerLink]="['/posts', currentPostType.uuid, 'new']">Create new {{ currentPostType.displayName }}</a>
+  </div>
+  <div>
+    Filter:
+    <button (click)="resetFilters()">Reset filters</button>
+    <button (click)="getPublishedPosts()">Published</button>
+    <button (click)="getScheduledPosts()">Scheduled</button>
+    <button (click)="getDraftedPosts()">Drafted</button>
+    <button (click)="getDeletedPosts()">In thrash</button>
+  </div>
   <table>
     <thead>
       <tr>
@@ -7,7 +19,7 @@
         <td>Status</td>
         <td>Published/Updated date</td>
         <td>Categories</td>
-        <td>Tags</td>
+        <td>Actions</td>
       </tr>
     </thead>
     <tbody>
@@ -16,7 +28,7 @@
           <a [routerLink]="['/post/', post.uuid, 'edit']">{{ post.title }}</a>
         </td>
         <td>
-          {{ post.status }}
+          {{ post.postStatus }}
         </td>
         <td>
           {{ post.publishDate }} / {{ post.updateDate }}
@@ -25,7 +37,8 @@
           {{ post.categories.join(', ') }}
         </td>
         <td>
-          {{ post.tags.join(', ') }}
+          <a [routerLink]="['/post/', post.uuid, 'edit']">Edit</a><br />
+          <button (click)="deletePost(post.uuid)">Delete</button>
         </td>
       </tr>
     </tbody>
