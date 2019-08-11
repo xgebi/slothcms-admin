@@ -2,8 +2,24 @@
 <main>
   <h1>Themes list</h1>
   <article>
-    <section *ngFor="let postType of postTypes">
-
-    </section>
+    <table>
+      <thead>
+        <tr>
+          <td>Name</td>
+          <td>Actions</td>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let postType of postTypes">
+          <td>
+            <a [routerLink]="['/settings/post-types/edit', postType.uuid]">{{ postType.displayName }}</a>
+          </td>
+          <td>
+            <a [routerLink]="['/settings/post-types/edit', postType.uuid]">Edit</a><br />
+            <button (click)="deletePostType(postType.uuid)">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
   </article>
 </main>

@@ -18,6 +18,7 @@ import { PageNotFoundComponent } from "./page-not-found/page-not-found.component
 import { AuthorizedGuard } from "./guards/authorized.guard";
 import { Actions } from "./models/actions";
 import { PostsCategoriesEditComponent } from "./posts/posts-categories-edit/posts-categories-edit.component";
+import { PostTypeEditComponent } from "./settings/post-type-edit/post-type-edit.component";
 
 const routes: Routes = [
   { path: "", component: InitComponent },
@@ -43,6 +44,15 @@ const routes: Routes = [
     children: [
       { path: "", component: SiteSettingsComponent, canActivate: [AuthorizedGuard], pathMatch: "full" },
       { path: "themes", canActivate: [AuthorizedGuard], component: ThemeListComponent },
+      { path: "themes/settings", canActivate: [AuthorizedGuard], component: ThemeSettingsComponent },
+      { path: "post-types", canActivate: [AuthorizedGuard], component: PostTypeSettingsComponent },
+      { path: "post-types/new", canActivate: [AuthorizedGuard], component: PostTypeEditComponent, data: { action: Actions.new } },
+      {
+        path: "post-types/edit/:postTypeId",
+        canActivate: [AuthorizedGuard],
+        component: PostTypeEditComponent,
+        data: { action: Actions.edit }
+      },
     ]
   },
   { path: "**", component: PageNotFoundComponent }

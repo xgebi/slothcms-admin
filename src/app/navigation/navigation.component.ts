@@ -1,15 +1,11 @@
 import { Component, OnInit, Input } from "@angular/core";
-import { Router, Params, ActivatedRoute } from "@angular/router";
+import { Router } from "@angular/router";
 import { LoggedInDetails } from "../login/login.service";
 import { NavigationService, MinimalUser } from "./navigation.service";
+import { PostType } from "../models/post-type";
 
 export interface PostTypes {
   postTypes: PostType[];
-}
-
-export interface PostType {
-  uuid: string;
-  displayName: string;
 }
 
 @Component({
@@ -24,7 +20,7 @@ export class NavigationComponent implements OnInit {
   public user: LoggedInDetails;
   public pathname = window.location.pathname;
 
-  constructor(private router: Router, private navigationService: NavigationService, private route: ActivatedRoute) {
+  constructor(private router: Router, private navigationService: NavigationService) {
     this.user = JSON.parse(localStorage.getItem("sloth-user"));
     const minUser: MinimalUser = {
       uuid: this.user.uuid,
