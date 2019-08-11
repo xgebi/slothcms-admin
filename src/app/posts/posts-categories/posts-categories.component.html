@@ -1,1 +1,13 @@
-<p>posts-categories works!</p>
+<app-navigation [postTypes]="postTypes"></app-navigation>
+<main *ngIf="categories">
+  <h1>Categories</h1>
+
+  <table>
+    <thead>
+      <tr>
+        <td>Name</td>
+        <td>actions</td>
+      </tr>
+    </thead>
+  </table>
+</main>
