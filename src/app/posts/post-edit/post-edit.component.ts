@@ -1,18 +1,19 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Params } from '@angular/router';
-import { PostEditService, PostActions } from './post-edit.service';
-import { PostTypes } from 'src/app/navigation/navigation.component';
-import PostItem from 'src/app/models/post-item';
+import { Component, OnInit } from "@angular/core";
+import { ActivatedRoute, Params } from "@angular/router";
+import { PostEditService } from "./post-edit.service";
+import { PostTypes } from "src/app/navigation/navigation.component";
+import PostItem from "src/app/models/post-item";
+import { Actions } from "src/app/models/actions";
 
 @Component({
-  selector: 'app-post-edit',
-  templateUrl: './post-edit.component.html',
-  styleUrls: ['./post-edit.component.scss'],
+  selector: "app-post-edit",
+  templateUrl: "./post-edit.component.html",
+  styleUrls: ["./post-edit.component.scss"],
   providers: [PostEditService]
 })
 export class PostEditComponent implements OnInit {
   public uuid: string;
-  private action: PostActions;
+  private action: Actions;
   public postTypes: PostTypes;
   public postInformation: PostItem;
   public categories = "";
@@ -30,7 +31,7 @@ export class PostEditComponent implements OnInit {
   }
 
   ngOnInit() {
-    if (this.action === PostActions.edit) {
+    if (this.action === Actions.edit) {
       this.postEditService.getEditedPostInfo(this.uuid)
         .subscribe(
           ((data: any) => {
@@ -44,7 +45,7 @@ export class PostEditComponent implements OnInit {
         );
     }
 
-    if (this.action === PostActions.new) {
+    if (this.action === Actions.new) {
       this.postEditService.getNewPostInfo(this.uuid)
         .subscribe(
           ((data: any) => {
@@ -52,7 +53,7 @@ export class PostEditComponent implements OnInit {
             this.postTypes = data.postTypes;
             this.postInformation = {
               uuid: data.newPostUuid
-            }
+            };
           }),
           (error: any) => { console.log(error); }
         );

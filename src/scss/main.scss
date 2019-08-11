@@ -83,6 +83,11 @@ input[type="reset"] {
   padding: .25rem 1.25rem;
   border: 1px solid black;
   box-shadow: 1px 1px darkgray;
+
+  &:active {
+    background: var(--dark-purple);
+    color: var(--white);
+  }
 }
 
 

@@ -23,6 +23,7 @@ import { ThemeListComponent } from "./themes/theme-list/theme-list.component";
 import { ThemeSettingsComponent } from "./themes/theme-settings/theme-settings.component";
 import { PageNotFoundComponent } from "./page-not-found/page-not-found.component";
 import { NavigationComponent } from "./navigation/navigation.component";
+import { PostsCategoriesEditComponent } from './posts/posts-categories-edit/posts-categories-edit.component';
 
 const conditionalProviders = [];
 
@@ -50,7 +51,8 @@ if (environment.mockBackend) {
     ThemeListComponent,
     ThemeSettingsComponent,
     PageNotFoundComponent,
-    NavigationComponent
+    NavigationComponent,
+    PostsCategoriesEditComponent
   ],
   imports: [
     BrowserModule,

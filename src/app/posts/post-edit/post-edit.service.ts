@@ -1,15 +1,10 @@
-import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { LoggedInDetails } from 'src/app/login/login.service';
-import PostItem from 'src/app/models/post-item';
-
-export enum PostActions {
-  new,
-  edit
-}
+import { Injectable } from "@angular/core";
+import { HttpClient, HttpHeaders } from "@angular/common/http";
+import { LoggedInDetails } from "src/app/login/login.service";
+import PostItem from "src/app/models/post-item";
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root"
 })
 export class PostEditService {
   private newPostInfoUrlPrefix = "/api/posts/";
