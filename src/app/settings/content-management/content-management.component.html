@@ -1,1 +1,18 @@
-<p>content-management works!</p>
+<app-navigation [postTypes]="postTypes"></app-navigation>
+<main>
+  <h1>Content management</h1>
+  <section>
+    <h2>Import</h2>
+    <ul>
+      <li>From Wordpress: <input type="file" /></li>
+      <li>From JSON: <input type="file" /></li>
+    </ul>
+  </section>
+  <section>
+    <h2>Export</h2>
+    <ul>
+      <li><button (click)="getExportedContent('wp')">Wordpress file</button></li>
+      <li><button (click)="getExportedContent('json')">JSON file</button></li>
+    </ul>
+  </section>
+</main>

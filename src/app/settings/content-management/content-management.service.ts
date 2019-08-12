@@ -5,11 +5,11 @@ import { LoggedInDetails } from "src/app/login/login.service";
 @Injectable({
   providedIn: "root"
 })
-export class MenuSettingsService {
+export class ContentManagementService {
   private httpOptions: any;
 
-  private menuUrlPrefix = "/api/content/";
-  private menuInformationUrlSuffix = "information";
+  private contentManagementUrlPrefix = "/api/content/";
+  private contentManagementInformationUrlSuffix = "information";
 
   constructor(private http: HttpClient) {
     const user: LoggedInDetails = JSON.parse(localStorage.getItem("sloth-user"));
@@ -20,7 +20,8 @@ export class MenuSettingsService {
     };
   }
 
-  getMenuPageInformation() {
-    return this.http.get(this.menuUrlPrefix + this.menuInformationUrlSuffix, this.httpOptions);
+  getContentManagementInformation() {
+    return this.http.get(this.contentManagementUrlPrefix + this.contentManagementInformationUrlSuffix, this.httpOptions);
   }
+
 }
