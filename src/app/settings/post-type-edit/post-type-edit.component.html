@@ -1,5 +1,34 @@
 <app-navigation [postTypes]="postTypes"></app-navigation>
-<main>
-  <h1>Post Type Edit</h1>
-
+<main *ngIf="postType">
+  <h1>Post Type Edit - {{ postType.displayName }}</h1>
+  <form (ngSubmit)="onSubmit(form)" #form="ngForm">
+    <div>
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" [(ngModel)]="postType.displayName">
+    </div>
+    <div>
+      <span>Slug:</span> <span>{{postType.slug}}</span> <button (click)="regenareteSlug()">Update</button>
+    </div>
+    <div>
+      <label for="archive-enabled">Archive enabled</label>
+      <select [(ngModel)]="postType.archiveEnabled" name="archive-enabled">
+        <option value="true">True</option>
+        <option value="false">False</option>
+      </select>
+    </div>
+    <div>
+      <label for="category-enabled">Categories enabled</label>
+      <select [(ngModel)]="postType.categoriesEnabled" name="categories-enabled">
+        <option value="true">True</option>
+        <option value="false">False</option>
+      </select>
+    </div>
+    <div>
+      <label for="tags-enabled">Tags enabled</label>
+      <select [(ngModel)]="postType.tagsEnabled" name="tags-enabled">
+        <option value="true">True</option>
+        <option value="false">False</option>
+      </select>
+    </div>
+  </form>
 </main>
