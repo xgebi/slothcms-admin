@@ -20,7 +20,9 @@ export class PostTypeEditComponent implements OnInit {
   constructor(private postTypeEditService: PostTypeEditService, private route: ActivatedRoute) {
     this.route
       .data
-      .subscribe(v => this.action = v.action);
+      .subscribe(v => {
+        this.action = v.action;
+      });
 
     this.route.params.subscribe((params: Params): void => {
       this.postTypeId = params["postTypeId"];
@@ -28,13 +30,29 @@ export class PostTypeEditComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.postTypeEditService.getPostTypeDetail(this.postTypeId)
-      .subscribe(
-        (data: any) => {
-          this.postTypes = data.postTypes;
-          this.postType = data.postTypeDetail;
-        }
-      );
+    if (this.action === Actions.edit) {
+      this.postTypeEditService.getEditedPostTypeDetail(this.postTypeId)
+        .subscribe(
+          (data: any) => {
+            this.postTypes = data.postTypes;
+            this.postType = data.postTypeDetail;
+          }
+        );
+    }
+
+    if (this.action === Actions.new) {
+      this.postTypeEditService.getNewPostTypeInfo()
+        .subscribe(
+          ((data: any) => {
+            console.log(data);
+            this.postTypes = data.postTypes;
+            this.postType = {
+              uuid: data.newPostTypeUuid
+            };
+          }),
+          (error: any) => { console.log(error); }
+        );
+    }
   }
 
   onSubmit(form: any) {

@@ -1,6 +1,7 @@
 <app-navigation [postTypes]="postTypes"></app-navigation>
-<main *ngIf="postType">
-  <h1>Post Type Edit - {{ postType.displayName }}</h1>
+<main>
+  <h1 *ngIf="postType">Post Type Edit - {{ postType.displayName }}</h1>
+  <h1 *ngIf="postType.slug.length === 0">Create new post type</h1>
   <form (ngSubmit)="onSubmit(form)" #form="ngForm">
     <div>
       <label for="name">Name:</label>

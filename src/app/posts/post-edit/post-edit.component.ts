@@ -39,7 +39,7 @@ export class PostEditComponent implements OnInit {
             this.postInformation = data.postInformation;
             this.categories = data.postInformation.categories.join(", ") || "";
             this.tags = data.postInformation.tags.join(", ") || "";
-            this.publishDate = new Date(data.postInformation.publishDate * 1000);
+            this.publishDate = new Date(data.postInformation.publishDate);
           }),
           (error: any) => { console.log(error); }
         );

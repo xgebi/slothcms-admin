@@ -11,30 +11,33 @@ export class PostTypeEditService {
   private postTypeUrlPrefix = "/api/post-type/";
   private postTypeUrlSuffix = "/detail";
   private savePostTypeUrlSuffix = "save";
-  private createPostTypeUrlSuffix = "new";
+  private createPostTypeUrlSuffix = "create";
+  private newPostTypeUrlSuffix = "new";
 
-  constructor(private http: HttpClient) { }
+  private user: LoggedInDetails;
+  private httpOptions: any;
 
-  getPostTypeDetail(postTypeId: string) {
-    const user: LoggedInDetails = JSON.parse(localStorage.getItem("sloth-user"));
-    const httpOptions = {
+  constructor(private http: HttpClient) {
+    this.user = JSON.parse(localStorage.getItem("sloth-user"));
+    this.httpOptions = {
       headers: new HttpHeaders({
-        authorization: user.uuid + ":" + user.token
+        authorization: this.user.uuid + ":" + this.user.token
       })
     };
-    return this.http.get(this.postTypeUrlPrefix + postTypeId + this.postTypeUrlSuffix, httpOptions);
+  }
+
+  getEditedPostTypeDetail(postTypeId: string) {
+    return this.http.get(this.postTypeUrlPrefix + postTypeId + this.postTypeUrlSuffix, this.httpOptions);
   }
 
   savePostTypeDetail(postType: PostType, action: Actions) {
-    const user: LoggedInDetails = JSON.parse(localStorage.getItem("sloth-user"));
-    const httpOptions = {
-      headers: new HttpHeaders({
-        authorization: user.uuid + ":" + user.token
-      })
-    };
     if (action === Actions.edit) {
-      return this.http.put(this.postTypeUrlPrefix + this.savePostTypeUrlSuffix, postType, httpOptions);
+      return this.http.put(this.postTypeUrlPrefix + this.savePostTypeUrlSuffix, postType, this.httpOptions);
     }
-    return this.http.put(this.postTypeUrlPrefix + this.createPostTypeUrlSuffix, postType, httpOptions);
+    return this.http.put(this.postTypeUrlPrefix + this.createPostTypeUrlSuffix, postType, this.httpOptions);
+  }
+
+  getNewPostTypeInfo() {
+    return this.http.get(this.postTypeUrlPrefix + this.newPostTypeUrlSuffix, this.httpOptions);
   }
 }
