@@ -25,6 +25,7 @@ import { PageNotFoundComponent } from "./page-not-found/page-not-found.component
 import { NavigationComponent } from "./navigation/navigation.component";
 import { PostsCategoriesEditComponent } from './posts/posts-categories-edit/posts-categories-edit.component';
 import { PostTypeEditComponent } from './settings/post-type-edit/post-type-edit.component';
+import { MenuSettingsComponent } from './settings/menu-settings/menu-settings.component';
 
 const conditionalProviders = [];
 
@@ -54,7 +55,8 @@ if (environment.mockBackend) {
     PageNotFoundComponent,
     NavigationComponent,
     PostsCategoriesEditComponent,
-    PostTypeEditComponent
+    PostTypeEditComponent,
+    MenuSettingsComponent
   ],
   imports: [
     BrowserModule,

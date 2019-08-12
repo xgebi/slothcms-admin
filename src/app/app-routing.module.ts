@@ -19,6 +19,7 @@ import { AuthorizedGuard } from "./guards/authorized.guard";
 import { Actions } from "./models/actions";
 import { PostsCategoriesEditComponent } from "./posts/posts-categories-edit/posts-categories-edit.component";
 import { PostTypeEditComponent } from "./settings/post-type-edit/post-type-edit.component";
+import { MenuSettingsComponent } from "./settings/menu-settings/menu-settings.component";
 
 const routes: Routes = [
   { path: "", component: InitComponent },
@@ -53,6 +54,8 @@ const routes: Routes = [
         component: PostTypeEditComponent,
         data: { action: Actions.edit }
       },
+      { path: "content", canActivate: [AuthorizedGuard], component: ContentManagementComponent },
+      { path: "menu", canActivate: [AuthorizedGuard], component: MenuSettingsComponent },
     ]
   },
   { path: "**", component: PageNotFoundComponent }
