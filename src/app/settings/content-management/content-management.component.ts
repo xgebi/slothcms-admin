@@ -27,4 +27,34 @@ export class ContentManagementComponent implements OnInit {
 
   }
 
+  uploadFile(type: string) {
+
+  }
+  /*
+  let files = event.target.files;
+
+    for (var i = 0, f; f = files[i]; i++) {
+      var reader = new FileReader();
+
+      reader.onload = ((theFile) => {
+        return (e) => {
+          let data = JSON.parse(e.target.result);
+          if (!data.words) {
+            this.setState({ wordsFormatError: true });
+            return;
+          }
+
+          this.setState({
+            words: data.words,
+            original: data.originalLanguage,
+            target: data.targetLanguage,
+            wordsFormatError: false
+          });
+        };
+      })(f);
+
+      reader.readAsText(f);
+    }
+  */
+
 }
