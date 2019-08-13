@@ -31,11 +31,11 @@ export class PostEditService {
     return this.http.get(this.editPostInfoUrlPrefix + postId + this.editPostInfoUrlSuffix, this.httpOptions);
   }
 
-  savePost(postInfo: PostItem) {
-    return this.http.put("/api/post/save", postInfo, this.httpOptions);
+  savePost(postInfo: PostItem, publish: boolean) {
+    return this.http.put("/api/post/save", { postInfo, publish }, this.httpOptions);
   }
 
-  createNewPost(postInfo: PostItem) {
-    return this.http.post("/api/post/create", postInfo, this.httpOptions);
+  createNewPost(postInfo: PostItem, publish: boolean) {
+    return this.http.post("/api/post/create", { postInfo, publish }, this.httpOptions);
   }
 }

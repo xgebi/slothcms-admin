@@ -1,5 +1,6 @@
 export default interface PostItem {
   uuid: string;
+  postType: string;
   title?: string;
   slug?: string;
   content?: string;

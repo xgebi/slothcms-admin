@@ -52,7 +52,8 @@ export class PostEditComponent implements OnInit {
             console.log(data);
             this.postTypes = data.postTypes;
             this.postInformation = {
-              uuid: data.newPostUuid
+              uuid: data.newPostUuid,
+              postType: this.uuid
             };
           }),
           (error: any) => { console.log(error); }
@@ -64,6 +65,34 @@ export class PostEditComponent implements OnInit {
     let temp: string = this.postInformation.title.toLocaleLowerCase();
     temp = temp.replace(/\s+/, "-").replace(/[^0-9a-zA-Z\-]+/, "");
     this.postInformation.slug = temp;
+  }
+
+  savePost(publish: boolean) {
+    if (this.action === Actions.edit) {
+      this.postEditService.savePost(this.postInformation, publish)
+        .subscribe(
+          (data: any) => {
+            console.log(data);
+          },
+          error => console.log(error)
+        );
+    }
+
+    if (this.action === Actions.new) {
+      this.postEditService.createNewPost(this.postInformation, publish)
+        .subscribe(
+          (data: any) => {
+            console.log(data);
+          },
+          error => console.log(error)
+        );
+    }
+  }
+
+  blurred() {
+    if (this.postInformation.title.length > 0) {
+      this.regenareteSlug();
+    }
   }
 
 }

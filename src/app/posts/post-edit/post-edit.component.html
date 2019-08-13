@@ -1,7 +1,7 @@
 <app-navigation [postTypes]="postTypes"></app-navigation>
 <main *ngIf="postInformation">
   <label for="title">Title</label>
-  <input id="title" name="title" [(ngModel)]="postInformation.title">
+  <input id="title" name="title" [(ngModel)]="postInformation.title" (blur)="blurred()">
 
   <div>
     <span>Slug:</span> <span>{{postInformation.slug}}</span> <button (click)="regenareteSlug()">Update</button>
@@ -38,12 +38,12 @@
     Publish at
     <input type="datetime" name="datetime" [(ngModel)]="publishDate" />
 
-    <button>Save progress</button>
-    <button>Publish</button>
+    <button (click)="savePost(false)">Save progress</button>
+    <button (click)="savePost(true)">Publish</button>
   </div>
 
   <div *ngIf="postInformation.postStatus === 'published'">
     Published: {{ publishDate.toDateString() }}
-    <button>Update</button>
+    <button (click)="savePost(true)">Update</button>
   </div>
 </main>
