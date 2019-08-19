@@ -63,7 +63,7 @@ export class PostEditComponent implements OnInit {
 
   regenareteSlug() {
     let temp: string = this.postInformation.title.toLocaleLowerCase();
-    temp = temp.replace(/\s+/, "-").replace(/[^0-9a-zA-Z\-]+/, "");
+    temp = temp.replace(/\s+/g, "-").replace(/[^0-9a-zA-Z\-]+/, "");
     this.postInformation.slug = temp;
   }
 
