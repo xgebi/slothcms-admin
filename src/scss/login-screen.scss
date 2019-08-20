@@ -1,0 +1,14 @@
+app-init > app-login:nth-child(2) {
+  background: var(--dark-purple);
+  height: 100vh;
+  grid-template-columns: 1fr 16rem 1fr;
+  grid-template-rows: 1fr auto 1fr;
+
+  #login-screen {
+    grid-column: 2 / 3;
+    grid-row: 2 / 3;
+    background: var(--white);
+    padding: 1rem;
+    box-shadow: 4px 4px var(--orange);
+  }
+}

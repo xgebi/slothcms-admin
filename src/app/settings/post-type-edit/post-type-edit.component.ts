@@ -8,7 +8,6 @@ import { Actions } from "src/app/models/actions";
 @Component({
   selector: "app-post-type-edit",
   templateUrl: "./post-type-edit.component.html",
-  styleUrls: ["./post-type-edit.component.scss"],
   providers: [PostTypeEditService]
 })
 export class PostTypeEditComponent implements OnInit {

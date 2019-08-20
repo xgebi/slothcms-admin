@@ -5,7 +5,6 @@ import { PostTypes } from "src/app/navigation/navigation.component";
 @Component({
   selector: "app-menu-settings",
   templateUrl: "./menu-settings.component.html",
-  styleUrls: ["./menu-settings.component.scss"],
   providers: [MenuSettingsService]
 })
 export class MenuSettingsComponent implements OnInit {

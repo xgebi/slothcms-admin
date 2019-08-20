@@ -7,7 +7,6 @@ import { ActivatedRoute, Params } from "@angular/router";
 @Component({
   selector: "app-posts-categories",
   templateUrl: "./posts-categories.component.html",
-  styleUrls: ["./posts-categories.component.scss"],
   providers: [PostsCategoriesService]
 })
 export class PostsCategoriesComponent implements OnInit {

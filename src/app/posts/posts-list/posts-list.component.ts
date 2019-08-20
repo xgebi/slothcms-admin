@@ -10,7 +10,6 @@ import { PostType } from "src/app/models/post-type";
 @Component({
   selector: "app-posts-list",
   templateUrl: "./posts-list.component.html",
-  styleUrls: ["./posts-list.component.scss"],
   providers: [PostsListService]
 })
 export class PostsListComponent implements OnInit {

@@ -1,12 +1,11 @@
-import { Component, OnInit } from '@angular/core';
-import { SiteSettingsService } from './site-settings.service';
-import { PostTypes } from 'src/app/navigation/navigation.component';
-import { Setting } from 'src/app/models/setting';
+import { Component, OnInit } from "@angular/core";
+import { SiteSettingsService } from "./site-settings.service";
+import { PostTypes } from "src/app/navigation/navigation.component";
+import { Setting } from "src/app/models/setting";
 
 @Component({
-  selector: 'app-site-settings',
-  templateUrl: './site-settings.component.html',
-  styleUrls: ['./site-settings.component.scss']
+  selector: "app-site-settings",
+  templateUrl: "./site-settings.component.html"
 })
 export class SiteSettingsComponent implements OnInit {
   public postTypes: PostTypes;
@@ -27,7 +26,7 @@ export class SiteSettingsComponent implements OnInit {
 
   onSubmit(form: any) {
     this.siteSettingsService.saveSettings(this.settings)
-    .subscribe(
+      .subscribe(
         (data: any) => {
           this.settings = data.settings;
         },

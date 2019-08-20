@@ -5,7 +5,6 @@ import { PostTypes } from "src/app/navigation/navigation.component";
 @Component({
   selector: "app-post-type-settings",
   templateUrl: "./post-type-settings.component.html",
-  styleUrls: ["./post-type-settings.component.scss"],
   providers: [PostTypeSettingsService]
 })
 export class PostTypeSettingsComponent implements OnInit {

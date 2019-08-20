@@ -8,7 +8,6 @@ import Category from "src/app/models/category";
 @Component({
   selector: "app-posts-categories-edit",
   templateUrl: "./posts-categories-edit.component.html",
-  styleUrls: ["./posts-categories-edit.component.scss"],
   providers: [PostsCategoriesEditService]
 })
 export class PostsCategoriesEditComponent implements OnInit {
