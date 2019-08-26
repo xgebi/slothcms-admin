@@ -67,6 +67,16 @@ export class PostEditComponent implements OnInit {
   }
 
   savePost(publish: boolean) {
+    this.postInformation.tags = this.tags.split(",");
+    for (let i = 0; i < this.postInformation.tags.length; i++) {
+      this.postInformation.tags[i] = this.postInformation.tags[i].trim();
+    }
+
+    this.postInformation.categories = this.categories.split(",");
+    for (let i = 0; i < this.postInformation.categories.length; i++) {
+      this.postInformation.categories[i] = this.postInformation.categories[i].trim();
+    }
+
     if (this.action === Actions.edit) {
       this.postEditService.savePost(this.postInformation, publish)
         .subscribe(
