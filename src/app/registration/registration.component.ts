@@ -15,6 +15,8 @@ export class RegistrationComponent implements OnInit {
   public password: string;
   public email: string;
   public sitename: string;
+  public description: string;
+  public url: string;
 
   constructor(private registrationService: RegistrationService, private router: Router) {
     this.formError = false;
@@ -28,16 +30,16 @@ export class RegistrationComponent implements OnInit {
       username: this.username,
       password: this.password,
       email: this.email,
-      sitename: this.sitename
+      sitename: this.sitename,
+      siteDescription: this.description,
+      siteUrl: this.url
     };
-    console.log(details);
     this.registrationService.register(details)
       .subscribe(resp => {
         if (resp.status === 201) {
           this.router.navigateByUrl("/login");
           return;
         } else {
-          console.log(resp);
           this.formError = true;
           this.error = resp.body["error"];
         }

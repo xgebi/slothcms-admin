@@ -17,7 +17,7 @@ export class PostEditComponent implements OnInit {
   public postInformation: PostItem;
   public categories = "";
   public tags = "";
-  public publishDate: Date;
+  public publishDate?: Date;
 
   constructor(private route: ActivatedRoute, private postEditService: PostEditService) {
     this.route
@@ -48,7 +48,6 @@ export class PostEditComponent implements OnInit {
       this.postEditService.getNewPostInfo(this.uuid)
         .subscribe(
           ((data: any) => {
-            console.log(data);
             this.postTypes = data.postTypes;
             this.postInformation = {
               uuid: data.newPostUuid,
@@ -77,11 +76,16 @@ export class PostEditComponent implements OnInit {
       this.postInformation.categories[i] = this.postInformation.categories[i].trim();
     }
 
+    this.postInformation.publishDate = this.publishDate ? this.publishDate.getMilliseconds().toString() : "";
+
     if (this.action === Actions.edit) {
       this.postEditService.savePost(this.postInformation, publish)
         .subscribe(
           (data: any) => {
-            console.log(data);
+            this.postInformation = data.postInformation;
+            this.tags = this.postInformation.tags.join(", ");
+            this.categories = this.postInformation.categories.join(", ");
+            this.publishDate = new Date(this.postInformation.publishDate);
           },
           error => console.log(error)
         );
@@ -91,7 +95,9 @@ export class PostEditComponent implements OnInit {
       this.postEditService.createNewPost(this.postInformation, publish)
         .subscribe(
           (data: any) => {
-            console.log(data);
+            this.postInformation = data.postInformation;
+            this.tags = this.postInformation.tags.join(", ");
+            this.categories = this.postInformation.categories.join(", ");
           },
           error => console.log(error)
         );

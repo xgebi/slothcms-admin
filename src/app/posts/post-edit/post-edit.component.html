@@ -43,7 +43,7 @@
   </div>
 
   <div *ngIf="postInformation.postStatus === 'published'">
-    Published: {{ publishDate.toDateString() }}
+    Published: {{ publishDate ? publishDate.toDateString() : "" }}
     <button (click)="savePost(true)">Update</button>
   </div>
 </main>

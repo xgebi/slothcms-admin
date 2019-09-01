@@ -6,6 +6,8 @@ export interface RegistrationDetails {
   password: string;
   email: string;
   sitename: string;
+  siteDescription: string;
+  siteUrl: string;
 }
 
 @Injectable({
