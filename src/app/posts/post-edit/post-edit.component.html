@@ -46,4 +46,11 @@
     Published: {{ publishDate ? publishDate.toDateString() : "" }}
     <button (click)="savePost(true)">Update</button>
   </div>
+
+  <section *ngIf="galleryList">
+    <div *ngFor="let image of galleryList">
+      <img src="{{image}}"><br />
+      URL: {{image}}
+    </div>
+  </section>
 </main>

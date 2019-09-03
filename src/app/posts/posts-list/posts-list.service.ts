@@ -49,6 +49,6 @@ export class PostsListService {
         authorization: user.uuid + ":" + user.token
       })
     };
-    return this.http.delete(this.postsListUrlPrefix + id + this.postsListUrlSuffix + this.deletePostSuffix, httpOptions);
+    return this.http.delete(this.postsListUrlPrefix + id + this.deletePostSuffix, httpOptions);
   }
 }

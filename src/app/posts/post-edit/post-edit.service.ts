@@ -13,12 +13,13 @@ export class PostEditService {
   private editPostInfoUrlPrefix = "/api/post/";
   private editPostInfoUrlSuffix = "/edit";
   private httpOptions: any;
+  private user: LoggedInDetails;
 
   constructor(private http: HttpClient) {
-    const user: LoggedInDetails = JSON.parse(localStorage.getItem("sloth-user"));
+    this.user = JSON.parse(localStorage.getItem("sloth-user"));
     this.httpOptions = {
       headers: new HttpHeaders({
-        authorization: user.uuid + ":" + user.token
+        authorization: this.user.uuid + ":" + this.user.token
       })
     };
   }
@@ -36,6 +37,13 @@ export class PostEditService {
   }
 
   createNewPost(postInfo: PostItem, publish: boolean) {
+    postInfo.author = this.user.uuid;
     return this.http.post("/api/post/create", { postInfo, publish }, this.httpOptions);
+  }
+
+  uploadImage(image: FormData) {
+    this.httpOptions.headers.append("Content-Type", "multipart/form-data");
+    this.httpOptions.headers.append("Accept", "application/json");
+    return this.http.post("/api/upload-image", image, this.httpOptions);
   }
 }

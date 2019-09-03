@@ -18,6 +18,7 @@ export class PostEditComponent implements OnInit {
   public categories = "";
   public tags = "";
   public publishDate?: Date;
+  public galleryList: string[];
 
   constructor(private route: ActivatedRoute, private postEditService: PostEditService) {
     this.route
@@ -39,6 +40,7 @@ export class PostEditComponent implements OnInit {
             this.categories = data.postInformation.categories.join(", ") || "";
             this.tags = data.postInformation.tags.join(", ") || "";
             this.publishDate = new Date(data.postInformation.publishDate);
+            this.galleryList = data.galleryList;
           }),
           (error: any) => { console.log(error); }
         );
@@ -53,6 +55,7 @@ export class PostEditComponent implements OnInit {
               uuid: data.newPostUuid,
               postType: this.uuid
             };
+            this.galleryList = data.galleryList;
           }),
           (error: any) => { console.log(error); }
         );
@@ -105,7 +108,7 @@ export class PostEditComponent implements OnInit {
   }
 
   blurred() {
-    if (this.postInformation.title.length > 0) {
+    if (this.postInformation.title.length > 0 && (!this.postInformation.slug || this.postInformation.slug.length === 0)) {
       this.regenareteSlug();
     }
   }

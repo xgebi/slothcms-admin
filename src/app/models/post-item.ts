@@ -13,4 +13,5 @@ export default interface PostItem {
   updateDate?: string;
   categories?: string[];
   tags?: string[];
+  author?: string;
 }
