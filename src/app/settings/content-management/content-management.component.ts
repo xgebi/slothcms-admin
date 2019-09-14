@@ -9,6 +9,8 @@ import { PostTypes } from "src/app/navigation/navigation.component";
 })
 export class ContentManagementComponent implements OnInit {
   public postTypes: PostTypes;
+  public wordpressFile: any;
+  public wpFile: any;
 
   constructor(private contentManagementService: ContentManagementService) { }
 
@@ -22,38 +24,28 @@ export class ContentManagementComponent implements OnInit {
       );
   }
 
-  getExportedContent(type: string) {
+  fileToUpload(event: any) {
+    let files = event.target.files;
 
-  }
-
-  uploadFile(type: string) {
-
-  }
-  /*
-  let files = event.target.files;
-
-    for (var i = 0, f; f = files[i]; i++) {
-      var reader = new FileReader();
+    for (var i = 0, f; f = files[i], i < 1; i++) {
+      let reader: any = new FileReader();
 
       reader.onload = ((theFile) => {
-        return (e) => {
-          let data = JSON.parse(e.target.result);
-          if (!data.words) {
-            this.setState({ wordsFormatError: true });
-            return;
-          }
-
-          this.setState({
-            words: data.words,
-            original: data.originalLanguage,
-            target: data.targetLanguage,
-            wordsFormatError: false
-          });
-        };
+        this.wordpressFile = theFile;
       })(f);
 
       reader.readAsText(f);
     }
-  */
+  }
 
+  uploadFile() {
+    this.contentManagementService.uploadWordpressFile(this.wordpressFile)
+      .subscribe(
+        (data: any) => {
+          console.log(data);
+          this.wpFile = null;
+        },
+        error => console.log(error)
+      );
+  }
 }

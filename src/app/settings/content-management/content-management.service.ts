@@ -10,6 +10,7 @@ export class ContentManagementService {
 
   private contentManagementUrlPrefix = "/api/content/";
   private contentManagementInformationUrlSuffix = "information";
+  private wordpressImportUrlSuffix = "import/wordpress";
 
   constructor(private http: HttpClient) {
     const user: LoggedInDetails = JSON.parse(localStorage.getItem("sloth-user"));
@@ -22,6 +23,10 @@ export class ContentManagementService {
 
   getContentManagementInformation() {
     return this.http.get(this.contentManagementUrlPrefix + this.contentManagementInformationUrlSuffix, this.httpOptions);
+  }
+
+  uploadWordpressFile(file: string) {
+    return this.http.post(`${this.contentManagementUrlPrefix}/${this.wordpressImportUrlSuffix}`, file, this.httpOptions);
   }
 
 }

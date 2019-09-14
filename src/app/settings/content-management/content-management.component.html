@@ -4,15 +4,14 @@
   <section>
     <h2>Import</h2>
     <ul>
-      <li>From Wordpress: <input type="file" /><button (click)="uploadFile('wp')">Upload</button></li>
-      <li>From JSON: <input type="file" /><button (click)="uploadFile('json')">Upload</button></li>
+      <li>From Wordpress: <input type="file" (change)="fileToUpload($event)" [(ngModel)]="wpFile" /><button
+          (click)="uploadFile()">Upload</button></li>
     </ul>
   </section>
-  <section>
+  <!--<section>
     <h2>Export</h2>
     <ul>
       <li><button (click)="getExportedContent('wp')">Wordpress file</button></li>
-      <li><button (click)="getExportedContent('json')">JSON file</button></li>
     </ul>
-  </section>
+  </section>-->
 </main>
