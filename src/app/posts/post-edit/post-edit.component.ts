@@ -1,9 +1,10 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, ViewChild } from "@angular/core";
 import { ActivatedRoute, Params } from "@angular/router";
 import { PostEditService } from "./post-edit.service";
 import { PostTypes } from "src/app/navigation/navigation.component";
 import PostItem from "src/app/models/post-item";
 import { Actions } from "src/app/models/actions";
+import { LoggedInDetails } from 'src/app/login/login.service';
 
 @Component({
   selector: "app-post-edit",
@@ -19,6 +20,11 @@ export class PostEditComponent implements OnInit {
   public tags = "";
   public publishDate?: Date;
   public galleryList: string[];
+  public thumbnailFile: any;
+  private user: LoggedInDetails;
+  private afuConfig: any;
+  public imageToUpload: any;
+  private uploadedImage;
 
   constructor(private route: ActivatedRoute, private postEditService: PostEditService) {
     this.route
@@ -110,6 +116,30 @@ export class PostEditComponent implements OnInit {
   blurred() {
     if (this.postInformation.title.length > 0 && (!this.postInformation.slug || this.postInformation.slug.length === 0)) {
       this.regenareteSlug();
+    }
+  }
+  uploadImage(event: any) {
+    this.imageToUpload = null;
+    this.postEditService.uploadFile(this.uploadedImage)
+      .subscribe(
+        (data: any) => {
+          this.galleryList = data.galleryList;
+        },
+        error => console.log(error)
+      )
+  }
+
+  fileWasAdded(event: any) {
+    let files = event.target.files;
+
+    for (var i = 0, f; f = files[i], i < 1; i++) {
+      let reader: any = new FileReader();
+
+      reader.onload = ((theFile) => {
+        this.uploadedImage = theFile;
+      })(f);
+
+      reader.readAsBinaryString(f);
     }
   }
 

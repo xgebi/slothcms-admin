@@ -10,22 +10,14 @@
   <label for="content">Content</label>
   <textarea id="content" name="content" [(ngModel)]="postInformation.content"></textarea>
 
-  <div *ngIf="!postInformation.cssFilePath">
+  <div>
     <label for="cssFile">CSS File</label>
-    <input type="file" name="cssFile" [(ngModel)]="postInformation.cssFile" />
+    <textarea type="file" name="cssFile"></textarea>
   </div>
 
-  <div *ngIf="postInformation.cssFilePath">
-    CSS file for this post is {{ postInformation.cssFilePath }}
-  </div>
-
-  <div *ngIf="!postInformation.jsFilePath">
-    <label for="jsFile">CSS File</label>
-    <input type="file" name="jsFile" [(ngModel)]="postInformation.jsFile" />
-  </div>
-
-  <div *ngIf="postInformation.jsFilePath">
-    JS file for this post is {{ postInformation.jsFilePath }}
+  <div>
+    <label for="jsFile">JS File</label>
+    <textarea type="file" name="jsFile" [(ngModel)]="postInformation.jsFile"></textarea>
   </div>
 
   <label for="categories">Categories</label>
@@ -48,6 +40,11 @@
   </div>
 
   <section *ngIf="galleryList">
+    <div>
+      <input type="file" [(ngModel)]="imageToUpload" (change)="fileWasAdded($event)" />
+      <button (click)="uploadImage($event)">Upload</button>
+    </div>
+
     <div *ngFor="let image of galleryList">
       <img src="{{image}}"><br />
       URL: {{image}}

@@ -41,9 +41,9 @@ export class PostEditService {
     return this.http.post("/api/post/create", { postInfo, publish }, this.httpOptions);
   }
 
-  uploadImage(image: FormData) {
-    this.httpOptions.headers.append("Content-Type", "multipart/form-data");
+  uploadFile(file: any) {
+    this.httpOptions.headers.append("Content-Type", file["type"]);
     this.httpOptions.headers.append("Accept", "application/json");
-    return this.http.post("/api/upload-image", image, this.httpOptions);
+    return this.http.post(`/api/upload-file/${file["name"]}`, file, this.httpOptions);
   }
 }

@@ -7,6 +7,8 @@ import { AppRoutingModule } from "./app-routing.module";
 
 import HttpMockRequestInterceptor from "./interceptors/httpMockRequestInterceptor";
 
+import { AngularFileUploaderModule } from "angular-file-uploader";
+
 import { environment } from "../environments/environment";
 import { InitComponent } from "./init/init.component";
 import { RegistrationComponent } from "./registration/registration.component";
