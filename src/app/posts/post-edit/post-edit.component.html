@@ -12,12 +12,12 @@
 
   <div>
     <label for="cssFile">CSS File</label>
-    <textarea type="file" name="cssFile"></textarea>
+    <textarea type="file" name="cssFile" [(ngModel)]="postInformation.css"></textarea>
   </div>
 
   <div>
     <label for="jsFile">JS File</label>
-    <textarea type="file" name="jsFile" [(ngModel)]="postInformation.jsFile"></textarea>
+    <textarea type="file" name="jsFile" [(ngModel)]="postInformation.js"></textarea>
   </div>
 
   <label for="categories">Categories</label>

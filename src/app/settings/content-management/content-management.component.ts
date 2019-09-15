@@ -25,10 +25,10 @@ export class ContentManagementComponent implements OnInit {
   }
 
   fileToUpload(event: any) {
-    let files = event.target.files;
+    const files = event.target.files;
 
     for (var i = 0, f; f = files[i], i < 1; i++) {
-      let reader: any = new FileReader();
+      const reader: any = new FileReader();
 
       reader.onload = ((theFile) => {
         this.wordpressFile = theFile;
